@@ -1,0 +1,35 @@
+{
+    "name": "FND+",
+    "description": "Foundation with extra joists!",
+    "version": "0.1",
+    "manifest_version": 3,
+    "permissions": [
+        "nativeMessaging",
+        "scripting",
+        "activeTab",
+        "tabs"
+    ],
+    "host_permissions": [
+      "https://*.foundation.app/*", "https://foundation.app/*"
+    ],
+    "action": {
+        "default_title": "FND+",
+        "default_popup": "popup.html"
+      },
+    "content_scripts": [
+        {
+          "matches": ["https://*.foundation.app/*", "https://foundation.app/*"],
+          "js": ["js/lib/jquery.js", "js/lib/arrive.js", "js/lib/slug.js", "js/content-script.js"],
+          "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "service_worker": "js/background.js"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["/js/listener.js", "/js/lib/jquery.js"],
+        "matches": ["https://*.foundation.app/*", "https://foundation.app/*"]
+      }
+    ]
+  }
